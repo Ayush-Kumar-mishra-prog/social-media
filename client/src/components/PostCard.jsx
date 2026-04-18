@@ -60,11 +60,15 @@ const PostCard = ({ post }) => {
         {post.video_urls &&
           post.video_urls.map((vid, index) => (
             <video
-              src={vid}
               key={index}
               controls
-              className={`w-full h-48 object-cover rounded-lg ${post.video_urls.length === 1 && "col-span-2 h-auto"}`}
-            />
+              playsInline
+              preload="metadata"
+              className={`w-full h-48 object-cover rounded-lg bg-black ${post.video_urls.length === 1 && "col-span-2 h-auto"}`}
+            >
+              <source src={vid} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           ))}
       </div>
 
